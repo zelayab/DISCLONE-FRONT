@@ -14,7 +14,7 @@ Aqui estan los archivos de la parte del front donde se mostramos como esta estru
     - - archivos bases ( nuestro footer y el nav ) y el index.html que seria nuestra home una vez conectada la persona.
 ## Carpeta Static
     - static:
-    - - css : css con estilos personalizados, junto con la libreria custom que se creo para ahorrar tiempo.
+    - - css : css con estilos personalizados, junto con la estilos custom que se creo para ahorrar tiempo.
     - - html : modal de crear servidor
     - - img : kas imagenes que se usan
     - - js : aqui esta logica de todo el proyecto
