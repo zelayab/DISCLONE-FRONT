@@ -1,0 +1,73 @@
+{% extends 'bases.html' %}
+
+{% block content %}
+<div class="container">
+    <!-- ... otros elementos del perfil ... -->
+    <div class="profile-flex">
+        <div id="flash-message" class="alert alert-success" style="display: none;">
+            Los cambios se han guardado correctamente.
+        </div>
+        <h1 class="title">Mi perfil</h1>
+        <h2 class="text-center">Bienvenido <span class="bold">{{ user.username }}</span></h2>
+
+        <div class="flex justify-around">
+            <div class="flex flex-column justify-center align-center m-1 p-4">
+                <div class="profile-avatar">
+                    <!-- podemos traer -->
+                    <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="Avatar">
+                </div>
+                <div class="profile-info">
+                    <div class="flex">
+                        <p class="bold mr-2 ">username</p>
+                        <p>{{ user.username }}</p>
+                    </div>
+                    <div class="flex">
+                        <p class="bold mr-2">email</p>
+                        <p>{{ user.email }}</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-edit-profile m-2" id="edit-btn" onclick="toggleEditForm()">Editar perfil</button>
+            </div>
+
+            
+            <!-- Contenedor del formulario de edición -->
+            <div class="edit-profile-form-container flex flex-column m-2" style="display: none;">
+                <form action="/profile" method="POST" class="profile-form">
+                    <h2 class="flex justify-center align-center text-white m-2" >Editar perfil</h2>
+                    <div class="flex input-container">
+                        <div class="flex flex-column m-1">
+                            <label for="username">
+                                Nombre de usuario
+                            </label>
+                            <input type="text" name="username" value="{{user.username}}" disabled>
+                        </div>
+                        <div class="flex flex-column m-1">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" name="new_email">
+                        </div>
+        
+                    </div>
+                    <div class="flex input-container">
+                        <div class="flex flex-column m-1">
+                            <label for="password">Contraseña</label>
+                            <input type="password" name="new_password" id="password" required>
+                        </div>
+                        <div class="flex flex-column m-1">
+                            <label for="confirm_password">Confirmar contraseña</label>
+                            <input type="password" name="confirm_new_password" id="confirm_password" required>
+                        </div>
+                        
+                        
+                    </div>
+                    <!-- aqui llamamos a update_profile -->
+                    <button class="btn btn-primary btn-edit-profile m-2" id="edit-btn" onclick="update_user()">Guardar cambios</button>
+                    <button class="btn btn-primary btn-edit-profile m-2" id="edit-btn" onclick="cancelEditForm()">Cancelar</button>
+
+                </form>
+            </div>
+        </div>
+        
+    </div> 
+</div>
+{% endblock %}
+ 

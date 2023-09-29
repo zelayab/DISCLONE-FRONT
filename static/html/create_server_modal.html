@@ -1,0 +1,18 @@
+        <!-- Contenido del modal cargado por fetch se mostrará aquí -->
+        <form class="form" id="form1" action="/server/create_server" method="POST">
+            <h1>Crear Servidor</h1>
+            <p class="Nombre">
+                <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nombre" id="name" />
+            </p>
+            <p class="text">
+                <textarea name="description" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Descripcion"></textarea>
+            </p>
+            <div class="flex justify-center">
+                <div class="submit w-50 m-3">
+                    <input type="submit" value="SUBMIT" id="button-blue"/>
+                    <div class="ease"></div>
+                </div>
+                <!-- Botón para cerrar el modal -->
+                <button class="w-50 m-3" onclick="closeModal()">Cerrar</button>
+            </div>
+        </form>

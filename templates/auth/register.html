@@ -1,0 +1,41 @@
+{% extends 'bases.html' %}
+
+{% block content %}
+    <div class="register">
+        <h1>Registro</h1>
+        <p>Por favor, ingresa tus datos para registrarte.</p>
+        <form action="/register" method="POST" class="register-form">
+            <div class="register-form-flex">
+            <div class="register-container">
+                <input placeholder="Username" type="text" name="username" id="username" required>
+                <input placeholder="Password" type="password" name="password" id="password" required>
+                <input placeholder="Confirm Password" type="password" name="confirm_password" id="confirm_password" required>
+                <input placeholder="email" type="email" name="email" id="email" required>
+                <input placeholder="Confirm email"type="email" name="confirm_email" id="confirm_email" required>
+            </div>
+            <div class="register-container">
+                <div class="avatar-preview">
+                    <input type="file" name="avatar" id="avatar" accept="image/png, image/jpeg" onchange="previewAvatar()">
+                    <img id="avatar-preview-img" src="" >
+                </div>
+
+            </div>
+        </div>
+        <button 
+            class="btn btn-primary btn-block btn-large"
+            type="submit">
+            Registrar
+        </button>
+
+        </form>
+        <p>¿Ya tienes una cuenta? <a href="/">Inicia sesión aquí</a></p>
+        </div>
+    <!-- Agregar esto en algún lugar del template -->
+    {% with message = get_flashed_messages() %}
+    {% if message %}
+        <div class="flash-message">
+            {{ message[0] }}
+        </div>
+    {% endif %}
+    {% endwith %}
+{% endblock %}

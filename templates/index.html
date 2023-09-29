@@ -1,0 +1,57 @@
+{% extends 'bases.html' %} {% block content %}
+<div class="flex align-center index-main">
+  <div class="flex flex-column align-center w-10 m-3">
+    <h2 class="p-2">Servidores</h2>
+    <div class="container-box-server p-2 relative">
+        <div class="flex flex-column justify-between">
+                <ul class="m-auto">
+                    {% for server in server_list %}
+                    <li><a href="/servers/{{ server.id }}">{{ server.name }}</a></li>
+                    {% else %}
+                    <li>No hay servidores</li>
+                    {% endfor %}
+                </ul>
+                <div class="mt-2 text-center server-btn--container">
+                  <a  
+                    onclick="openModal()"
+                    id="createServerButton">
+                      <img
+                          src="{{ url_for('static', filename='img/plus.svg') }}"
+                          alt="Create server"
+                          class="server-btn--image"
+                      />
+                  </a>
+          </div>
+              
+        </div>
+    </div>
+  </div>
+  <div class="flex  flex-column justify-between align-center w-90 m-3">
+    <!-- si esta logeado mostramos esto -->
+    {% if logged_in %}
+    <h1> ¡ Bienvenido {{ username }} !</h1>
+    <h2> Selecciona un servidor en el panel izquierdo</h2>
+    {% endif %}
+  </div>
+  <div class="flex flex-column justify-center p-4">
+    <div>
+      <label for="serverSelect">Selecciona un servidor:</label>
+      <select class="form-control" id="serverSelect" onchange="selectServer(this.value)">
+        <option value="">-- Selecciona un servidor --</option>
+        {% for server in server_list %}
+          <option value="{{ server.id }}">{{ server.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  
+  <!-- Botón para eliminar el servidor seleccionado -->
+  <button class="btn btn-primary" id="deleteServerButton" onclick="deleteServer()">Eliminar servidor</button>
+  </div>
+</div>
+
+<div class="modal-container">
+  <div class="modal-content">
+    <!-- Contenido del modal cargado por fetch se mostrará aquí -->
+  </div>
+</div>
+{% endblock %}

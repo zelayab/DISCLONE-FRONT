@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <title>Clon de Discord</title>
+  </head>
+  <body>
+    <header>
+      <div class="flex">
+        <div class="navbar-logo">
+          {% if logged_in %}
+          <a href="/index.html" style="text-decoration: none; font-size: 45px;">💀<span class="navbar-logo-hat">🎩</span></a>
+          {% else %}
+          <a href="/" style="text-decoration: none; font-size: 45px;">💀<span class="navbar-logo-hat">🎩</span></a>
+          {% endif %}
+        </div>
+        <nav>
+          <ul class="text-white flex">
+            {% if logged_in %}
+            <li class="mr-2"><a href="/profile">Mi perfil</a></li>
+            <li class="mr-2"><a href="/logout">Cerrar Sesión</a></li>
+            {% else %}
+            <li class="mr-2"><a href="/register">Registrarse</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %} 
+    </main>
+      <footer class="footer">
+        <div class="container-footer">
+          <p>Clon de Discord 2023 &copy; </p>
+    </div>
+    <hr>
+    <div class="container-redes">
+      <div class="container-socials">
+        <a class="footer-links" href="https://github.com/nazzgrelitod10s" target="_blank">
+          <img src="{{ url_for('static', filename='img/github-logo.png')}}" class="footer-icon-img" alt="githubLogo">
+          Lucas Josue Gomez Astorga
+        </a>
+        <a class="footer-links" href="https://github.com/ChavitoCdm" target="_blank">
+          <img src="{{ url_for('static', filename='img/github-logo.png')}}" class="footer-icon-img" alt="githubLogo">
+          Andres Chavez
+        </a>
+        <a class="footer-links" href="https://github.com/zelayab" target="_blank">
+          <img src="{{ url_for('static', filename='img/github-logo.png')}}" class="footer-icon-img" alt="githubLogo">
+          Bernardo Zelaya
+        </a>
+      </div>
+    </div>
+    <!--Upateco-->
+    <div class="final-container">
+        @--Upateco--Proyecto Final--2023--@
+       
+    </div>
+    </footer>
+
+  </body>
+</html>
+

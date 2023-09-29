@@ -1,0 +1,58 @@
+<!-- creamos la pagina que se muestre el servidor seleccionado con su lista de canales -->
+
+{% extends 'bases.html' %}
+{% block content %}
+<div>
+    <div class="mt-1 container-wrapper">
+        <div class="server-container flex flex-column">
+            <h2 class="p-2 text-center">Servidor {{ server.name }} </h2>
+              <div class="container-box p-2 flex flex-column justify-center">
+                  <div class="flex flex-column justify-center mt-1 align-center  ">
+                      <p class="mr-5 server-description ">Descripción: <span>{{ server.description }}</span></p>
+                      <p class="server-description-channel">El servidor <span>{{ server.name }}</span>  tiene <span>{{ channel_list|length }}</span> canales.</p>
+                  </div>
+              
+                  <div class="flex flex-column justify-center mt-3">
+                  <!-- para validar que los canales sean del servidor en el que nos encontramos -->
+                    <input type="hidden" id="serverId" value="{{ server.id }}">
+                    <input type="hidden" id="serverName" value="{{ server.name }}">
+                    <input type="hidden" id="serverDescription" value="{{ server.description }}">
+                    <p class="text-center channel-title">
+                      Nombre del canal:
+                    </p>
+                     
+                     
+                    <!-- validamos que si hay canales en el servidor lo muestre sino que muestre que NO HAY  -->
+                    <select class="form-control channel text-center br-10" id="channelSelect" onchange="redirectToSelectedChannel()">
+                      <option value="">Selecciona un canal</option>
+                      {% for channel in channel_list %}
+                          <option class="channel-options" value="{{ channel.id }}">{{ channel.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="flex justify-center">
+                    <!-- mostramos el objeto server con sus atributos-->
+                    <a onclick="openChannelModal()" class="btn btn-primary p-4 w-100 br-10">Crear canal</a>
+                  </div>
+              </div>
+        </div>
+
+        <div class="flex flex-column channel-container">
+            <div class="w-100">
+                <ul id="message-list"  class="message-list">
+                    <!-- Los mensajes del canal seleccionado se mostrarán aquí -->
+                    <li>
+                      
+                    </li>
+                </ul>
+            </div>
+        </div>
+</div>
+
+<div class="modal-container">
+  <div class="modal-content">
+    <!-- Contenido del modal cargado por fetch se mostrará aquí -->
+  </div>
+</div>
+
+{% endblock %}

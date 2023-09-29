@@ -1,0 +1,52 @@
+/* alerts */
+/* Estilos para el mensaje flash */
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #f8d7da;
+  }
+  
+  .alert-success {
+    position: fixed;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    top: 60px;
+    right: 50px;
+  }
+  
+  .alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+  }
+  
+  .alert-dismissible {
+    position: relative;
+  }
+  
+  .alert-dismissible .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+  
+  }
+  
+  
+  .flash-message {
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f5f5f5;
+      color: #333;
+      font-weight: bold;
+      display: none; /* Inicialmente ocultos */
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      text-align: center;
+      z-index: 1000; /* Z-index alto para que estén encima de otros elementos */
+  }
