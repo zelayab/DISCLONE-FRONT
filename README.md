@@ -4,6 +4,7 @@ Final Integration Project for UpaTeco university ( programming II )
 
 # FRONTEND SIDE 
 Aqui estan los archivos de la parte del front donde se mostramos como esta estructurado los templates y los archivos statics:
+
     - Templates:
     - - auth : donde esta login y register
     - - error: la pagina donde estan los distintos templates de errores
